@@ -13,8 +13,8 @@ environment {
 
      NEXUS_VERSION = "nexus3"
      NEXUS_PROTOCOL = "http"
-     NEXUS_URL = "139.177.192.139:8081"
-     NEXUS_REPOSITORY = "utrains-nexus-pipeline"
+     NEXUS_URL = "45.79.56.117:8081"
+     NEXUS_REPOSITORY = "biom"
      NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
      POM_VERSION = ''
 }
@@ -24,8 +24,10 @@ environment {
             steps {
                 echo 'build & SonarQube analysis...'
                withSonarQubeEnv('SonarServer') {
-                    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=teephoenix_geolocation -X'
+                   sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=teephoenix_geolocation -X'
                }
+            }
+          }
         stage('Check Quality Gate') {
             steps {
                 echo 'Checking quality gate...'
