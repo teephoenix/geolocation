@@ -25,6 +25,7 @@ environment {
                 echo 'build & SonarQube analysis...'
                withSonarQubeEnv('SonarServer') {
                     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=teephoenix_geolocation -X'
+               }
         stage('Check Quality Gate') {
             steps {
                 echo 'Checking quality gate...'
